@@ -1,0 +1,77 @@
+GET http://localhost:3700
+Content-Type: application/json
+
+###
+
+POST http://localhost:3700/api/v1/users
+Content-Type: application/json
+
+{
+    "username": "maria",
+    "email": "maria@ranbow.com",
+    "password": "123456"
+}
+
+###
+
+GET http://localhost:3700/api/v1/users
+Content-Type: application/json
+
+###
+
+GET http://localhost:3700/api/v1/users/admin
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3700/api/v1/users/admin
+Content-Type: application/json
+
+{
+    "username": "tchalla",
+    "email": "tchalla@king.com",
+    "password": "1234567"
+}
+
+###
+
+DELETE http://localhost:3700/api/v1/users/admin
+Content-Type: application/json
+
+###
+
+POST http://localhost:3700/api/v1/users/admin/twits
+Content-Type: application/json
+
+{
+    "twit": "Hola, mundo!"
+}
+
+###
+
+GET http://localhost:3700/api/v1/users/tony/twits
+Content-Type: application/json
+
+###
+
+GET http://localhost:3700/api/v1/twits
+Content-Type: application/json
+
+###
+
+GET http://localhost:3700/api/v1/twits/oh4L7Ftqu
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3700/api/v1/twits/oh4L7Ftqu
+Content-Type: application/json
+
+{
+    "twit": "Hello World!"
+}
+
+###
+
+DELETE http://localhost:3700/api/v1/twits/oh4L7Ftqu
+Content-Type: application/json

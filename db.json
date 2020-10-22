@@ -1,0 +1,137 @@
+{
+  "twits": [
+    {
+      "_id": "ZzroEeEX1",
+      "twit": "Puedo hacer esto todo el día",
+      "userId": "p4gZkJhZk",
+      "createdAt": 1603398382803,
+      "updatedAt": 1603398382803
+    },
+    {
+      "_id": "b0JE5yXna",
+      "twit": "Yo soy Iron Man",
+      "userId": "ObfHYF2eZ",
+      "createdAt": 1603398454118,
+      "updatedAt": 1603398454118
+    },
+    {
+      "_id": "ZG7-Z9udx",
+      "twit": "Dónde está la cerveza?",
+      "userId": "Vgxs-1X3b",
+      "createdAt": 1603398808468,
+      "updatedAt": 1603398808468
+    },
+    {
+      "_id": "KUJakPXhG",
+      "twit": "Soy un genio, millonario, playboy, filántropo...",
+      "userId": "ObfHYF2eZ",
+      "createdAt": 1603402244781,
+      "updatedAt": 1603402244781
+    },
+    {
+      "_id": "xB5bJrsf9",
+      "twit": "Hola, mundo!",
+      "userId": "QFcKQFv-L",
+      "createdAt": 1603403908891,
+      "updatedAt": 1603403908891
+    }
+  ],
+  "users": [
+    {
+      "_id": "Vgxs-1X3b",
+      "username": "thor",
+      "email": "thor@odinson.com",
+      "password": "1234567",
+      "createdAt": 1603392864994,
+      "updatedAt": 1603394779344
+    },
+    {
+      "_id": "ObfHYF2eZ",
+      "username": "tony",
+      "email": "tony@stark.com",
+      "password": "1234567",
+      "createdAt": 1603393236310,
+      "updatedAt": 1603393236310
+    },
+    {
+      "_id": "6mnEikfSn",
+      "username": "natasha",
+      "email": "natasha@romanof.com",
+      "password": "1234567",
+      "createdAt": 1603393642920,
+      "updatedAt": 1603394525105
+    },
+    {
+      "_id": "4Qs4vcQxt",
+      "username": "bruce",
+      "email": "bruce@banner.com",
+      "password": "1234567",
+      "createdAt": 1603393646852,
+      "updatedAt": 1603394648870
+    },
+    {
+      "_id": "p4gZkJhZk",
+      "username": "steve",
+      "email": "steve@rogers.com",
+      "password": "1234567",
+      "createdAt": 1603393649851,
+      "updatedAt": 1603394719708
+    },
+    {
+      "_id": "pF-T4L9ym",
+      "username": "peter",
+      "email": "peter@parker.com",
+      "password": "1234567",
+      "createdAt": 1603393668074,
+      "updatedAt": 1603396346737
+    },
+    {
+      "_id": "HQqDqgUju",
+      "username": "star",
+      "email": "star@lord.com",
+      "password": "1234567",
+      "createdAt": 1603393672339,
+      "updatedAt": 1603396378363
+    },
+    {
+      "_id": "Zq90GKTij",
+      "username": "clint",
+      "email": "clint@barton.com",
+      "password": "1234567",
+      "createdAt": 1603393675069,
+      "updatedAt": 1603396418893
+    },
+    {
+      "_id": "ucanf7WF_",
+      "username": "tchalla",
+      "email": "tchalla@king.com",
+      "password": "1234567",
+      "createdAt": 1603393678386,
+      "updatedAt": 1603396843789
+    },
+    {
+      "_id": "QFcKQFv-L",
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "123456",
+      "createdAt": 1603393682547,
+      "updatedAt": 1603393682547
+    },
+    {
+      "_id": "PUs03s122",
+      "username": "scarlet",
+      "email": "scarlet@witch.com",
+      "password": "123456",
+      "createdAt": 1603395670575,
+      "updatedAt": 1603395670575
+    },
+    {
+      "_id": "hK6PV1Z0C",
+      "username": "maria",
+      "email": "maria@ranbow.com",
+      "password": "123456",
+      "createdAt": 1603395773443,
+      "updatedAt": 1603395773443
+    }
+  ]
+}
