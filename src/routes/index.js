@@ -14,23 +14,21 @@ router.post('/', async (ctx, next) => {
 
     if (data.twit != '') {
         await axios.post(`${process.env.BASE_URL}/users/peter/twits`,
-        JSON.stringify(data),
-        {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(async response => {
-            console.log(response.data)
-        })
-        .catch(err => next(err))
+                JSON.stringify(data), {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            .then(async response => {
+                console.log(response.data)
+            })
+            .catch(err => next(err))
     }
-    
+
     let result
     await axios.get(`${process.env.BASE_URL}/twits`)
         .then(async response => {
             result = await response.data.data
-            console.log(response.data.data)
         })
         .catch(err => next(err))
 
@@ -44,13 +42,20 @@ router.get('/', async (ctx, next) => {
     await axios.get(`${process.env.BASE_URL}/twits`)
         .then(async response => {
             result = await response.data.data
-            console.log(response.data.data)
         })
         .catch(err => next(err))
 
     await ctx.render('index', {
         result
     })
+})
+
+router.post('/login', async (ctx, next) => {
+    const data = ctx.request.body
+
+    if (data.email != '' && data.password != '') {}
+
+    await ctx.render('login')
 })
 
 router.get('/login', async (ctx, next) => {
@@ -60,17 +65,20 @@ router.get('/login', async (ctx, next) => {
 router.post('/registro', async (ctx, next) => {
     const data = ctx.request.body
 
-    await axios.post(`${process.env.BASE_URL}/users`,
-        JSON.stringify(data),
-        {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(async response => {
-            console.log(response.data)
-        })
-        .catch(err => next(err))
+    if (data.email != '' && data.password != '') {
+        await axios.post(`${process.env.BASE_URL}/users`,
+                JSON.stringify(data), {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            .then(async response => {
+                console.log(response.data)
+            })
+            .catch(err => next(err))
+    }
+
+    await ctx.render('registro')
 })
 
 router.get('/registro', async (ctx, next) => {
@@ -82,7 +90,6 @@ router.get('/:id', async (ctx, next) => {
     await axios.get(`${process.env.BASE_URL}/users/${ctx.params.id}/twits`)
         .then(async response => {
             twits = await response.data.data
-            console.log(response.data.data)
         })
         .catch(err => next(err))
 
@@ -103,7 +110,6 @@ router.get('/twit/:id', async (ctx, next) => {
     await axios.get(`${process.env.BASE_URL}/twits/${ctx.params.id}`)
         .then(async response => {
             result = await response.data.data
-            console.log(response.data.data)
         })
         .catch(err => next(err))
 
