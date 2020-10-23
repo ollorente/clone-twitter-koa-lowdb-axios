@@ -1,9 +1,9 @@
-<h1 class="h4 mb-4">Twit <%= result._id %></h1>
+<h1 class="h4 mb-4">Twit <%= twit._id %></h1>
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title mb-0"><a href="/<%= result.userId %>">@<%= result.userId %></a></h5>
-    <small class="card-subtitle mb-2 text-muted"><%= result.createdAt %></small>
-    <p class="card-text"><%= result.twit %></p>
+    <h5 class="card-title mb-0"><a href="/<%= twit.userId %>">@<%= twit.userId %></a></h5>
+    <small class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></small>
+    <p class="card-text"><%= twit.twit %></p>
   </div>
 </div>

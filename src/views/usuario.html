@@ -1,15 +1,17 @@
 <div class="card mb-4 text-center">
     <img src="https://res.cloudinary.com/dbszizqh4/image/upload/v1562472720/default.jpg" class="card-img-top"
         alt="cenefa">
-    <img src="https://www.gravatar.com/avatar/<%= user.gravatar %>?d=robohash" alt="<%= user.username %>" style="background: whitesmoke; width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
+    <% if (user.data) { %>
+    <img src="https://www.gravatar.com/avatar/<%= user.data.gravatar %>?d=robohash" alt="<%= user.data.username %>" style="background: whitesmoke; width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
+    <% } %>
     <div class="card-body">
-        <h1 class="h4">@<%= user.username %></h1>
-        <p class="card-text">Desde <%= user.createdAt %></p>
+        <h1 class="h4">@<%= user.data.username %></h1>
+        <p class="card-text">Desde <%= user.data.createdAt %></p>
     </div>
 </div>
 
-<% if (twits) { %>
-<% twits.forEach(twit => { %>
+<% if (twits.data) { %>
+<% twits.data.forEach(twit => { %>
 <div class="card mb-2">
     <div class="card-body">
         <h5 class="card-title h6 mb-0">@<%= twit.userId %></h5>

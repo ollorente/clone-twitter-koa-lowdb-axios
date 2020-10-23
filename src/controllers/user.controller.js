@@ -6,7 +6,7 @@ const md5 = require('md5')
 
 const app = {}
 
-app.create = async (ctx, next) => {
+app.create = async ctx => {
     const {
         username,
         email,
@@ -65,7 +65,7 @@ app.create = async (ctx, next) => {
     }
 }
 
-app.list = async (ctx, next) => {
+app.list = async ctx => {
     const result = await getConnection()
         .get('users')
         .sortBy('username')
@@ -77,7 +77,7 @@ app.list = async (ctx, next) => {
     }
 }
 
-app.get = async (ctx, next) => {
+app.get = async ctx => {
     const result = await getConnection()
         .get('users')
         .find({
@@ -91,7 +91,7 @@ app.get = async (ctx, next) => {
     }
 }
 
-app.update = async (ctx, next) => {
+app.update = async ctx => {
     const userInfo = await getConnection()
         .get('users')
         .find({
@@ -158,7 +158,7 @@ app.update = async (ctx, next) => {
     }
 }
 
-app.remove = async (ctx, next) => {
+app.remove = async ctx => {
     const userInfo = await getConnection()
         .get('users')
         .find({
@@ -178,6 +178,34 @@ app.remove = async (ctx, next) => {
             error: false,
             msg: 'Removed!',
             data: result
+        }
+    } else {
+        ctx.body = {
+            error: true,
+            msg: 'User not found!'
+        }
+    }
+}
+
+app.login = async ctx => {
+    const { email, password } = ctx.request.body
+
+    const userInfo = await getConnection()
+        .get('users')
+        .find({
+            email: email,
+            password: md5(password)
+        })
+        .value()
+
+    if (userInfo) {
+        ctx.body = {
+            error: false,
+            data: {
+                username: userInfo.username,
+                email: userInfo.email,
+                gravatar: userInfo.grvatar
+            }
         }
     } else {
         ctx.body = {

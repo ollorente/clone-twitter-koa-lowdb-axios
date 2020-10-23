@@ -5,7 +5,7 @@ const shortid = require('shortid')
 
 const app = {}
 
-app.create = async (ctx, next) => {
+app.create = async ctx => {
     const userInfo = await getConnection()
         .get('users')
         .find({
@@ -40,7 +40,7 @@ app.create = async (ctx, next) => {
     }
 }
 
-app.list = async (ctx, next) => {
+app.list = async ctx => {
     const userInfo = await getConnection()
         .get('users')
         .find({
@@ -69,7 +69,7 @@ app.list = async (ctx, next) => {
     }
 }
 
-app.get = async (ctx, next) => {
+app.get = async ctx => {
     const result = await getConnection()
         .get('twits')
         .find({
@@ -83,7 +83,7 @@ app.get = async (ctx, next) => {
     }
 }
 
-app.update = async (ctx, next) => {
+app.update = async ctx => {
     const twitInfo = await getConnection()
         .get('twits')
         .find({
@@ -115,7 +115,7 @@ app.update = async (ctx, next) => {
     }
 }
 
-app.remove = async (ctx, next) => {
+app.remove = async ctx => {
     const twitInfo = await getConnection()
         .get('twits')
         .find({
@@ -144,7 +144,7 @@ app.remove = async (ctx, next) => {
     }
 }
 
-app.listAll = async (ctx, next) => {
+app.listAll = async ctx => {
     const result = await getConnection()
         .get('twits')
         .sortBy('createdAt')

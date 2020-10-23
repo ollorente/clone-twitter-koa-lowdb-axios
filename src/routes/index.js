@@ -20,7 +20,13 @@ router.post('/', async (ctx, next) => {
                     }
                 })
             .then(async response => {
-                console.log(response.data)
+                /* console.log(response.data) */
+
+                if (response.data.error === true) {
+                    console.log('Algo extraño sucedió')
+                } else {
+                    console.log('El twit ha sido creado!')
+                }
             })
             .catch(err => next(err))
     }
@@ -53,7 +59,24 @@ router.get('/', async (ctx, next) => {
 router.post('/login', async (ctx, next) => {
     const data = ctx.request.body
 
-    if (data.email != '' && data.password != '') {}
+    if (data.email != '' && data.password != '') {
+        await axios.post(`${process.env.BASE_URL}/login`,
+                JSON.stringify(data), {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            .then(async response => {
+                if (response.data.error === true) {
+                    console.log('No tienes acceso.')
+                } else {
+                    const token = await JSON.stringify(response.data.data)
+                    /* localStorage.setItem('access_token', token) */
+                    localStorage.setItem('access_token', JSON.stringify(response.data.data))
+                }
+            })
+            .catch(err => next(err))
+    }
 
     await ctx.render('login')
 })
@@ -86,37 +109,45 @@ router.get('/registro', async (ctx, next) => {
 })
 
 router.get('/:id', async (ctx, next) => {
+    const {
+        id
+    } = ctx.params
+
     let user, twits
-    await axios.get(`${process.env.BASE_URL}/users/${ctx.params.id}/twits`)
+    await axios.get(`${process.env.BASE_URL}/users/${id}`)
         .then(async response => {
-            twits = await response.data.data
+            user = await response.data
+            /* console.log('USER:', user) */
+
+            await axios.get(`${process.env.BASE_URL}/users/${user.data.username}/twits`)
+                .then(async response => {
+                    twits = await response.data
+                    /* console.log('TWIT:', twits) */
+                })
+                .catch(err => next(err))
         })
         .catch(err => next(err))
 
-    await axios.get(`${process.env.BASE_URL}/users/${ctx.params.id}`)
-        .then(async response => {
-            user = await response.data.data
-        })
-        .catch(err => next(err))
-
-    await ctx.render('user', {
+    await ctx.render('usuario', {
         user,
         twits
     })
 })
 
 router.get('/twit/:id', async (ctx, next) => {
-    let result
+    let twit
     await axios.get(`${process.env.BASE_URL}/twits/${ctx.params.id}`)
         .then(async response => {
-            result = await response.data.data
+            twit = await response.data.data
         })
         .catch(err => next(err))
 
     await ctx.render('twit', {
-        result
+        twit
     })
 })
+
+router.post(`${_URL}/login`, USER.login)
 
 router.get(`${_URL}/twits`, TWIT.listAll)
 router.get(`${_URL}/twits/:id`, TWIT.get)
