@@ -1,4 +1,5 @@
 require('dotenv').config()
+const serve = require('koa-static')
 const Koa = require('koa')
 const render = require('koa-ejs')
 const path = require('path')
@@ -13,6 +14,7 @@ const {
 const port = process.env.PORT || 3700
 createConnection()
 
+app.use(serve(path.join(__dirname, '/public')))
 app.use(bodyParser())
 app.use(json())
 render(app, {

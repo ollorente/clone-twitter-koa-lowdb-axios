@@ -76,6 +76,55 @@
       "userId": "peter",
       "createdAt": 1603430386938,
       "updatedAt": 1603430386938
+    },
+    {
+      "_id": "f9Bp1w4VD",
+      "twit": "¡Diablos, no puedo! ¡Soy un capitán!",
+      "userId": "steve",
+      "createdAt": 1603476994520,
+      "updatedAt": 1603476994520
+    },
+    {
+      "_id": "e6FYu2A7J",
+      "twit": "Probablemente sea demasiado tarde para ir al baño, ¿verdad?",
+      "userId": "steve",
+      "createdAt": 1603477062358,
+      "updatedAt": 1603477062358
+    },
+    {
+      "_id": "b9JxA9vd5",
+      "twit": "Déjame ir, está bien",
+      "userId": "natasha",
+      "createdAt": 1603477339559,
+      "updatedAt": 1603477339559
+    },
+    {
+      "_id": "s6RLvdf-S",
+      "twit": "Thanos: Ni siquiera sé quién eres.\r\nYo: Lo sabrás",
+      "userId": "scarlet",
+      "createdAt": 1603478140200,
+      "updatedAt": 1603478140200
+    },
+    {
+      "_id": "d4JlGHGRl",
+      "twit": "¡Somos los Asgardianos de la Galaxia!",
+      "userId": "thor",
+      "createdAt": 1603479032957,
+      "updatedAt": 1603479032957
+    },
+    {
+      "_id": "r2OG3XRRt",
+      "twit": "¡Wakanda para siempre!",
+      "userId": "tchalla",
+      "createdAt": 1603489306042,
+      "updatedAt": 1603489306042
+    },
+    {
+      "_id": "YQ9Jp-S43",
+      "twit": "Cuántas veces tengo que enseñarte: sólo porque algo funcione no significa que no se pueda mejorar.",
+      "userId": "tchalla",
+      "createdAt": 1603496530016,
+      "updatedAt": 1603496530016
     }
   ],
   "users": [

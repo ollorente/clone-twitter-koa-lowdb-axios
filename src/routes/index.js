@@ -13,7 +13,7 @@ router.post('/', async (ctx, next) => {
     const data = ctx.request.body
 
     if (data.twit != '') {
-        await axios.post(`${process.env.BASE_URL}/users/peter/twits`,
+        await axios.post(`${process.env.BASE_URL}/users/tchalla/twits`,
                 JSON.stringify(data), {
                     headers: {
                         'Content-Type': 'application/json'
@@ -67,12 +67,21 @@ router.post('/login', async (ctx, next) => {
                     }
                 })
             .then(async response => {
+                /* console.log('RESPONSE:', response.data) */
+                /* console.log('ERROR:', response.data.error) */
+                /* console.log('DATA:', JSON.stringify(response.data.jwt)) */
+
                 if (response.data.error === true) {
+                    console.log('ERROR:', response.data.error)
                     console.log('No tienes acceso.')
                 } else {
-                    const token = await JSON.stringify(response.data.data)
-                    /* localStorage.setItem('access_token', token) */
-                    localStorage.setItem('access_token', JSON.stringify(response.data.data))
+                    const token = await response.data.jwt
+                    /* console.log('ERROR:', response.data.error) */
+                    /* console.log('TOKEN:', JSON.stringify(token)) */
+                    /* LocalStorage.setItem('access_token', JSON.stringify(token)) */
+                    await this.createToken(JSON.stringify(token))
+
+                    await ctx.redirect('/')
                 }
             })
             .catch(err => next(err))
@@ -81,7 +90,7 @@ router.post('/login', async (ctx, next) => {
     await ctx.render('login')
 })
 
-router.get('/login', async (ctx, next) => {
+router.get('/login', async ctx => {
     await ctx.render('login')
 })
 
@@ -104,7 +113,7 @@ router.post('/registro', async (ctx, next) => {
     await ctx.render('registro')
 })
 
-router.get('/registro', async (ctx, next) => {
+router.get('/registro', async ctx => {
     await ctx.render('registro')
 })
 
@@ -113,38 +122,51 @@ router.get('/:id', async (ctx, next) => {
         id
     } = ctx.params
 
-    let user, twits
+    let userData, twitsData
     await axios.get(`${process.env.BASE_URL}/users/${id}`)
         .then(async response => {
-            user = await response.data
-            /* console.log('USER:', user) */
+            userData = await response.data
+            /* console.log('USER:', userData) */
 
-            await axios.get(`${process.env.BASE_URL}/users/${user.data.username}/twits`)
+            await axios.get(`${process.env.BASE_URL}/users/${userData.data.username}/twits`)
                 .then(async response => {
-                    twits = await response.data
-                    /* console.log('TWIT:', twits) */
+                    twitsData = await response.data
+                    /* console.log('TWIT:', twitsData) */
                 })
                 .catch(err => next(err))
         })
         .catch(err => next(err))
 
     await ctx.render('usuario', {
-        user,
-        twits
+        user: userData,
+        twits: twitsData
     })
 })
 
 router.get('/twit/:id', async (ctx, next) => {
-    let twit
+    let user, twit
     await axios.get(`${process.env.BASE_URL}/twits/${ctx.params.id}`)
         .then(async response => {
             twit = await response.data.data
+
+            await axios.get(`${process.env.BASE_URL}/users/${twit.userId}`)
+                .then(async response => {
+                    user = await response.data
+                })
+                .catch(err => next(err))
         })
         .catch(err => next(err))
 
     await ctx.render('twit', {
-        twit
+        twit,
+        user
     })
+})
+
+router.get('/salir', async ctx => {
+    console.log('Aquí pasó algo...')
+    LocalStorage.clear()
+    await ctx.redirect('/login')
 })
 
 router.post(`${_URL}/login`, USER.login)

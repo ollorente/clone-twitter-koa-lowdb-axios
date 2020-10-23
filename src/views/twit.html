@@ -1,9 +1,20 @@
 <h1 class="h4 mb-4">Twit <%= twit._id %></h1>
 
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title mb-0"><a href="/<%= twit.userId %>">@<%= twit.userId %></a></h5>
+<div class="card mb-3">
+  <div class="card-body p-3">
     <small class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></small>
     <p class="card-text"><%= twit.twit %></p>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-body p-3">
+    <div class="media">
+      <img src="https://www.gravatar.com/avatar/<%= user.data.gravatar %>?d=robohash" class="mr-3" alt="@<%= user.data.username %>" style="background: whitesmoke; width: 4rem; height: 4rem; object-fit: cover; position: center center; border-radius: 50%;">
+      <div class="media-body">
+        <h5 class="mt-0 h6"><a href="/<%= user.data.username %>">@<%= user.data.username %></a></h5>
+        <small><span>Desde <b><%= user.data.createdAt %></b></span><br><span>Actualización <b><%= user.data.updatedAt %></b></span></small>
+      </div>
+    </div>
   </div>
 </div>

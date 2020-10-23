@@ -4,7 +4,7 @@
     <% if (user.data) { %>
     <img src="https://www.gravatar.com/avatar/<%= user.data.gravatar %>?d=robohash" alt="<%= user.data.username %>" style="background: whitesmoke; width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
     <% } %>
-    <div class="card-body">
+    <div class="card-body p-3">
         <h1 class="h4">@<%= user.data.username %></h1>
         <p class="card-text">Desde <%= user.data.createdAt %></p>
     </div>
@@ -13,8 +13,7 @@
 <% if (twits.data) { %>
 <% twits.data.forEach(twit => { %>
 <div class="card mb-2">
-    <div class="card-body">
-        <h5 class="card-title h6 mb-0">@<%= twit.userId %></h5>
+    <div class="card-body p-3">
         <small class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></small>
         <p class="card-text"><%= twit.twit %></p>
         <a href="/twit/<%= twit._id %>" class="card-link">Ver</a>

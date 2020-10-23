@@ -33,7 +33,7 @@ app.create = async ctx => {
             username: username.toLowerCase(),
             email,
             password: await md5(password),
-            gravatar:  await md5(email.toLowerCase()),
+            gravatar: await md5(email.toLowerCase()),
             createdAt: Date.now(),
             updatedAt: Date.now()
         }
@@ -188,7 +188,10 @@ app.remove = async ctx => {
 }
 
 app.login = async ctx => {
-    const { email, password } = ctx.request.body
+    const {
+        email,
+        password
+    } = ctx.request.body
 
     const userInfo = await getConnection()
         .get('users')
@@ -201,10 +204,10 @@ app.login = async ctx => {
     if (userInfo) {
         ctx.body = {
             error: false,
-            data: {
+            jwt: {
                 username: userInfo.username,
                 email: userInfo.email,
-                gravatar: userInfo.grvatar
+                gravatar: userInfo.gravatar
             }
         }
     } else {
