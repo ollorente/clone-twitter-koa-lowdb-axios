@@ -1,14 +1,18 @@
-<main class="main" id="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-6 offset-3">
-                <h1>Welcome all the users</h1>
-                <ul>
-                    <% users.forEach(user => { %>
-                    <li><%= user %></li>
-                    <% }) %>
-                </ul>
-            </div>
-        </div>
+<form action="/" method="POST" class="mb-4">
+    <div class="form-group">
+        <label for="twit">¿Qué estas pensando?</label>
+        <textarea class="form-control" name="twit" id="twit" rows="3"></textarea>
     </div>
-</main>
+    <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+</form>
+
+<% result.forEach(twit => { %>
+<div class="card mb-2">
+    <div class="card-body">
+        <h5 class="card-title h6"><a href="/<%= twit.userId %>">@<%= twit.userId %></a></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></h6>
+        <p class="card-text"><%= twit.twit %></p>
+        <a href="/twit/<%= twit._id %>" class="card-link">Ver</a>
+    </div>
+</div>
+<% }) %>

@@ -1,7 +1,7 @@
 const Router = require('koa-router')
 const router = new Router()
+const axios = require('axios')
 
-const users = ['Viral', 'Sachin', 'Rohit', 'Dhomi']
 const _URL = '/api/v1'
 
 const {
@@ -9,9 +9,106 @@ const {
     USER
 } = require('../controllers')
 
-router.get('/', async ctx => {
+router.post('/', async (ctx, next) => {
+    const data = ctx.request.body
+
+    if (data.twit != '') {
+        await axios.post(`${process.env.BASE_URL}/users/peter/twits`,
+        JSON.stringify(data),
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(async response => {
+            console.log(response.data)
+        })
+        .catch(err => next(err))
+    }
+    
+    let result
+    await axios.get(`${process.env.BASE_URL}/twits`)
+        .then(async response => {
+            result = await response.data.data
+            console.log(response.data.data)
+        })
+        .catch(err => next(err))
+
     await ctx.render('index', {
-        users: users
+        result
+    })
+})
+
+router.get('/', async (ctx, next) => {
+    let result
+    await axios.get(`${process.env.BASE_URL}/twits`)
+        .then(async response => {
+            result = await response.data.data
+            console.log(response.data.data)
+        })
+        .catch(err => next(err))
+
+    await ctx.render('index', {
+        result
+    })
+})
+
+router.get('/login', async (ctx, next) => {
+    await ctx.render('login')
+})
+
+router.post('/registro', async (ctx, next) => {
+    const data = ctx.request.body
+
+    await axios.post(`${process.env.BASE_URL}/users`,
+        JSON.stringify(data),
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(async response => {
+            console.log(response.data)
+        })
+        .catch(err => next(err))
+})
+
+router.get('/registro', async (ctx, next) => {
+    await ctx.render('registro')
+})
+
+router.get('/:id', async (ctx, next) => {
+    let user, twits
+    await axios.get(`${process.env.BASE_URL}/users/${ctx.params.id}/twits`)
+        .then(async response => {
+            twits = await response.data.data
+            console.log(response.data.data)
+        })
+        .catch(err => next(err))
+
+    await axios.get(`${process.env.BASE_URL}/users/${ctx.params.id}`)
+        .then(async response => {
+            user = await response.data.data
+        })
+        .catch(err => next(err))
+
+    await ctx.render('user', {
+        user,
+        twits
+    })
+})
+
+router.get('/twit/:id', async (ctx, next) => {
+    let result
+    await axios.get(`${process.env.BASE_URL}/twits/${ctx.params.id}`)
+        .then(async response => {
+            result = await response.data.data
+            console.log(response.data.data)
+        })
+        .catch(err => next(err))
+
+    await ctx.render('twit', {
+        result
     })
 })
 

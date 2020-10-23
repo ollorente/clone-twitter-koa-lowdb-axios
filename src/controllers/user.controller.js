@@ -2,30 +2,38 @@ const {
     getConnection
 } = require('../database')
 const shortid = require('shortid')
+const md5 = require('md5')
 
 const app = {}
 
 app.create = async (ctx, next) => {
+    const {
+        username,
+        email,
+        password
+    } = ctx.request.body
+
     const usernameInfo = await getConnection()
         .get('users')
         .find({
-            username: ctx.request.body.username
+            username: username
         })
         .value()
 
     const emailInfo = await getConnection()
         .get('users')
         .find({
-            email: ctx.request.body.email
+            email: email
         })
         .value()
 
     if (!usernameInfo && !emailInfo) {
         const newData = {
             _id: shortid.generate(),
-            username: ctx.request.body.username,
-            email: ctx.request.body.email,
-            password: ctx.request.body.password,
+            username: username.toLowerCase(),
+            email,
+            password: await md5(password),
+            gravatar:  await md5(email.toLowerCase()),
             createdAt: Date.now(),
             updatedAt: Date.now()
         }
@@ -38,7 +46,7 @@ app.create = async (ctx, next) => {
         ctx.body = {
             error: false,
             msg: 'Created!',
-            data: result
+            data: newData
         }
     } else {
         if (usernameInfo) {
@@ -108,6 +116,10 @@ app.update = async (ctx, next) => {
                 email: update.email
             })
             .value()
+
+        if (update.email) {
+            update.gravatar = await md5(update.email.toLowerCase())
+        }
 
         if (!usernameInfo && !emailInfo) {
             const result = await getConnection()

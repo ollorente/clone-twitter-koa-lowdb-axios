@@ -1,0 +1,27 @@
+<div class="card mb-4 text-center">
+    <img src="https://res.cloudinary.com/dbszizqh4/image/upload/v1562472720/default.jpg" class="card-img-top"
+        alt="cenefa">
+    <img src="https://www.gravatar.com/avatar/<%= user.gravatar %>?f=robohash" alt="<%= user.username %>" style="width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
+    <div class="card-body">
+        <h1 class="h4">@<%= user.username %></h1>
+        <p class="card-text">Desde <%= user.createdAt %></p>
+    </div>
+</div>
+
+<% if (twits) { %>
+<% twits.forEach(twit => { %>
+<div class="card mb-2">
+    <div class="card-body">
+        <h5 class="card-title h6">@<%= twit.userId %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></h6>
+        <p class="card-text"><%= twit.twit %></p>
+        <a href="/twit/<%= twit._id %>" class="card-link">Ver</a>
+    </div>
+</div>
+<% }) %>
+<% } %>
+<% if (!twits) { %>
+<div class="alert alert-light" role="alert">
+    A simple light alert—check it out!
+    </div>
+<% } %>

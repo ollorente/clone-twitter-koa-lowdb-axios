@@ -7,8 +7,8 @@ POST http://localhost:3700/api/v1/users
 Content-Type: application/json
 
 {
-    "username": "maria",
-    "email": "maria@ranbow.com",
+    "username": "juan",
+    "email": "juan@perez.com",
     "password": "123456"
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3700/api/v1/users/admin
+PUT http://localhost:3700/api/v1/users/tchallas
 Content-Type: application/json
 
 {

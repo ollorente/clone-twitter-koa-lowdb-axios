@@ -3,37 +3,58 @@
     {
       "_id": "ZzroEeEX1",
       "twit": "Puedo hacer esto todo el día",
-      "userId": "p4gZkJhZk",
+      "userId": "steve",
       "createdAt": 1603398382803,
       "updatedAt": 1603398382803
     },
     {
       "_id": "b0JE5yXna",
       "twit": "Yo soy Iron Man",
-      "userId": "ObfHYF2eZ",
+      "userId": "tony",
       "createdAt": 1603398454118,
       "updatedAt": 1603398454118
     },
     {
       "_id": "ZG7-Z9udx",
       "twit": "Dónde está la cerveza?",
-      "userId": "Vgxs-1X3b",
+      "userId": "thor",
       "createdAt": 1603398808468,
       "updatedAt": 1603398808468
     },
     {
       "_id": "KUJakPXhG",
       "twit": "Soy un genio, millonario, playboy, filántropo...",
-      "userId": "ObfHYF2eZ",
+      "userId": "tony",
       "createdAt": 1603402244781,
       "updatedAt": 1603402244781
     },
     {
       "_id": "xB5bJrsf9",
       "twit": "Hola, mundo!",
-      "userId": "QFcKQFv-L",
+      "userId": "admin",
       "createdAt": 1603403908891,
       "updatedAt": 1603403908891
+    },
+    {
+      "_id": "tXX-xo-tN",
+      "twit": "Reciclar es cuidar el planeta :)",
+      "userId": "trashteo",
+      "createdAt": 1603425422712,
+      "updatedAt": 1603425422712
+    },
+    {
+      "_id": "JAOyQKZ7c",
+      "twit": "Primero reutiliza y después recicla ;)",
+      "userId": "trashteo",
+      "createdAt": 1603425809990,
+      "updatedAt": 1603425809990
+    },
+    {
+      "_id": "mbqXIeBBV",
+      "twit": "Mi tio dijo, un gran poder conlleva una gran responsabilidad.",
+      "userId": "peter",
+      "createdAt": 1603426635135,
+      "updatedAt": 1603426635135
     }
   ],
   "users": [
@@ -41,7 +62,8 @@
       "_id": "Vgxs-1X3b",
       "username": "thor",
       "email": "thor@odinson.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "59ba325451dde417a61360ecc071caf8",
       "createdAt": 1603392864994,
       "updatedAt": 1603394779344
     },
@@ -49,7 +71,8 @@
       "_id": "ObfHYF2eZ",
       "username": "tony",
       "email": "tony@stark.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "76fddfdb1cf4262252936e734bde2cc8",
       "createdAt": 1603393236310,
       "updatedAt": 1603393236310
     },
@@ -57,7 +80,8 @@
       "_id": "6mnEikfSn",
       "username": "natasha",
       "email": "natasha@romanof.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "36f6c305d9338a3bd831ab3705007df7",
       "createdAt": 1603393642920,
       "updatedAt": 1603394525105
     },
@@ -65,7 +89,8 @@
       "_id": "4Qs4vcQxt",
       "username": "bruce",
       "email": "bruce@banner.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "8de5b39d98cebb994bbd0b8602149259",
       "createdAt": 1603393646852,
       "updatedAt": 1603394648870
     },
@@ -73,7 +98,8 @@
       "_id": "p4gZkJhZk",
       "username": "steve",
       "email": "steve@rogers.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "eae3c22e0d4668d9a956d013edc0eefe",
       "createdAt": 1603393649851,
       "updatedAt": 1603394719708
     },
@@ -81,7 +107,8 @@
       "_id": "pF-T4L9ym",
       "username": "peter",
       "email": "peter@parker.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "fd7f0b6438870228826b7c23b7b4a9c5",
       "createdAt": 1603393668074,
       "updatedAt": 1603396346737
     },
@@ -89,7 +116,8 @@
       "_id": "HQqDqgUju",
       "username": "star",
       "email": "star@lord.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "1de19a37e5b005501860d717c6906f97",
       "createdAt": 1603393672339,
       "updatedAt": 1603396378363
     },
@@ -97,7 +125,8 @@
       "_id": "Zq90GKTij",
       "username": "clint",
       "email": "clint@barton.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "b5c09be86deb241ac43389b387a389f5",
       "createdAt": 1603393675069,
       "updatedAt": 1603396418893
     },
@@ -105,15 +134,17 @@
       "_id": "ucanf7WF_",
       "username": "tchalla",
       "email": "tchalla@king.com",
-      "password": "1234567",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "ca1e7e3ec99e9e8d72bb4752c28e529a",
       "createdAt": 1603393678386,
-      "updatedAt": 1603396843789
+      "updatedAt": 1603412328169
     },
     {
       "_id": "QFcKQFv-L",
       "username": "admin",
       "email": "admin@admin.com",
-      "password": "123456",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "64e1b8d34f425d19e1ee2ea7236d3028",
       "createdAt": 1603393682547,
       "updatedAt": 1603393682547
     },
@@ -121,7 +152,8 @@
       "_id": "PUs03s122",
       "username": "scarlet",
       "email": "scarlet@witch.com",
-      "password": "123456",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "2cb5b7ee0a433c489be0776f46e4537e",
       "createdAt": 1603395670575,
       "updatedAt": 1603395670575
     },
@@ -129,9 +161,55 @@
       "_id": "hK6PV1Z0C",
       "username": "maria",
       "email": "maria@ranbow.com",
-      "password": "123456",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "05767bbc269fd1794fcdd7e5b7b83efd",
       "createdAt": 1603395773443,
       "updatedAt": 1603395773443
+    },
+    {
+      "_id": "KYIqzUO4R",
+      "username": "juan",
+      "email": "juan@perez.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "45571b422d615ff8aa5507f13ca91c87",
+      "createdAt": 1603421599771,
+      "updatedAt": 1603421599772
+    },
+    {
+      "_id": "Jgrr8T0V7",
+      "username": "ciudadbusca",
+      "email": "ciudadbusca@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "8546af10885325154ca196cbcb28aa22",
+      "createdAt": 1603423024284,
+      "updatedAt": 1603423024284
+    },
+    {
+      "_id": "D9MdXAGT6",
+      "username": "photoshut",
+      "email": "photoshut@hotmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "230fbd85d5f3eded085bf28a1571ec8a",
+      "createdAt": 1603423314502,
+      "updatedAt": 1603423314502
+    },
+    {
+      "_id": "cpL3k_gNH",
+      "username": "trashteo",
+      "email": "trashteogroup@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "1b48022fcc979aa7285ffd3595f3e8cd",
+      "createdAt": 1603424334972,
+      "updatedAt": 1603424334972
+    },
+    {
+      "_id": "RlsMsU9Mo",
+      "username": "micorreo",
+      "email": "micorreo@correo.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "gravatar": "059b5f422c68a96dddbd40689a516485",
+      "createdAt": 1603424596920,
+      "updatedAt": 1603424596920
     }
   ]
 }

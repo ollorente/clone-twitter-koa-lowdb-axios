@@ -17,7 +17,7 @@ app.create = async (ctx, next) => {
         const newData = {
             _id: shortid.generate(),
             twit: ctx.request.body.twit,
-            userId: userInfo._id,
+            userId: userInfo.username,
             createdAt: Date.now(),
             updatedAt: Date.now()
         }
@@ -30,7 +30,7 @@ app.create = async (ctx, next) => {
         ctx.body = {
             error: false,
             msg: 'Created!',
-            data: result
+            data: newData
         }
     } else {
         ctx.body = {
@@ -52,7 +52,7 @@ app.list = async (ctx, next) => {
         const result = await getConnection()
             .get('twits')
             .filter({
-                userId: userInfo._id
+                userId: userInfo.username
             })
             .sortBy('createdAt')
             .value()

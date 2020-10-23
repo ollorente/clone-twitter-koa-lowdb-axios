@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Koa = require('koa')
 const render = require('koa-ejs')
 const path = require('path')
