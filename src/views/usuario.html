@@ -15,8 +15,9 @@
 <% twits.forEach(twit => { %>
 <div class="card mb-2">
     <div class="card-body p-3">
-        <small class="card-subtitle mb-2 text-muted"><%= new Date(twit.createdAt).toISOString().split('T')[0].split('-').reverse().join('/') %></small>
-        <p class="card-text"><%= twit.twit %></p>
+        <small
+            class="card-subtitle mb-2 text-muted"><%= new Date(twit.createdAt).toISOString().split('T')[0].split('-').reverse().join('/') %></small>
+        <p class="card-text"><%= twit.twit.slice(0, 70) %><% if (twit.twit.length > 70) { %>...<% } %></p>
         <a href="/twit/<%= twit._id %>" class="card-link">Ver</a>
     </div>
 </div>
