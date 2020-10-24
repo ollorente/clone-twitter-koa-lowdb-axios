@@ -9,6 +9,13 @@ const {
     USER
 } = require('../controllers')
 
+async function formatDate(item) {
+    const a = await new Date(item).toISOString().split('T')[0]
+    const b = await a.split('-').reverse().join('/')
+
+    return b
+}
+
 router.post('/', async (ctx, next) => {
     const data = ctx.request.body
 
@@ -20,12 +27,10 @@ router.post('/', async (ctx, next) => {
                     }
                 })
             .then(async response => {
-                /* console.log(response.data) */
-
                 if (response.data.error === true) {
-                    console.log('Algo extraño sucedió')
+                    alert('Algo extraño sucedió')
                 } else {
-                    console.log('El twit ha sido creado!')
+                    await ctx.redirect('/')
                 }
             })
             .catch(err => next(err))
@@ -73,13 +78,13 @@ router.post('/login', async (ctx, next) => {
 
                 if (response.data.error === true) {
                     console.log('ERROR:', response.data.error)
-                    console.log('No tienes acceso.')
+                    alert('No tienes acceso.')
                 } else {
                     const token = await response.data.jwt
                     /* console.log('ERROR:', response.data.error) */
                     /* console.log('TOKEN:', JSON.stringify(token)) */
-                    /* LocalStorage.setItem('access_token', JSON.stringify(token)) */
-                    await this.createToken(JSON.stringify(token))
+                    LocalStorage.setItem('access_token', JSON.stringify(token))
+                    /* await this.createToken(JSON.stringify(token)) */
 
                     await ctx.redirect('/')
                 }
@@ -106,6 +111,9 @@ router.post('/registro', async (ctx, next) => {
                 })
             .then(async response => {
                 console.log(response.data)
+                if (response.data) {
+                    await ctx.redirect('/login')
+                }
             })
             .catch(err => next(err))
     }
@@ -125,13 +133,16 @@ router.get('/:id', async (ctx, next) => {
     let userData, twitsData
     await axios.get(`${process.env.BASE_URL}/users/${id}`)
         .then(async response => {
-            userData = await response.data
-            /* console.log('USER:', userData) */
+            userData = {
+                username: await response.data.data.username,
+                gravatar: await response.data.data.gravatar,
+                createdAt: await formatDate(response.data.data.createdAt),
+                updatedAt: await formatDate(response.data.data.updatedAt)
+            }
 
-            await axios.get(`${process.env.BASE_URL}/users/${userData.data.username}/twits`)
+            await axios.get(`${process.env.BASE_URL}/users/${userData.username}/twits`)
                 .then(async response => {
-                    twitsData = await response.data
-                    /* console.log('TWIT:', twitsData) */
+                    twitsData = await response.data.data
                 })
                 .catch(err => next(err))
         })
@@ -147,11 +158,22 @@ router.get('/twit/:id', async (ctx, next) => {
     let user, twit
     await axios.get(`${process.env.BASE_URL}/twits/${ctx.params.id}`)
         .then(async response => {
-            twit = await response.data.data
+            twit = {
+                id: await response.data.data._id,
+                twit: await response.data.data.twit,
+                userId: await response.data.data.userId,
+                createdAt: await formatDate(response.data.data.createdAt),
+                updatedAt: await formatDate(response.data.data.updatedAt)
+            }
 
             await axios.get(`${process.env.BASE_URL}/users/${twit.userId}`)
                 .then(async response => {
-                    user = await response.data
+                    user = {
+                        username: await response.data.data.username,
+                        gravatar: await response.data.data.gravatar,
+                        createdAt: await formatDate(response.data.data.createdAt),
+                        updatedAt: await formatDate(response.data.data.updatedAt)
+                    }
                 })
                 .catch(err => next(err))
         })

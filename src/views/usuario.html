@@ -1,20 +1,21 @@
 <div class="card mb-4 text-center">
     <img src="https://res.cloudinary.com/dbszizqh4/image/upload/v1562472720/default.jpg" class="card-img-top"
         alt="cenefa">
-    <% if (user.data) { %>
-    <img src="https://www.gravatar.com/avatar/<%= user.data.gravatar %>?d=robohash" alt="<%= user.data.username %>" style="background: whitesmoke; width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
+    <% if (user) { %>
+    <img src="https://www.gravatar.com/avatar/<%= user.gravatar %>?d=robohash" alt="<%= user.username %>"
+        style="background: whitesmoke; width: 8rem; height: 8rem; object-fit: cover; position: center center; border-radius: 50%; margin: -4rem auto 0;">
     <% } %>
     <div class="card-body p-3">
-        <h1 class="h4">@<%= user.data.username %></h1>
-        <p class="card-text">Desde <%= user.data.createdAt %></p>
+        <h1 class="h4">@<%= user.username %></h1>
+        <p class="card-text">Desde <%= user.createdAt %></p>
     </div>
 </div>
 
-<% if (twits.data) { %>
-<% twits.data.forEach(twit => { %>
+<% if (twits) { %>
+<% twits.forEach(twit => { %>
 <div class="card mb-2">
     <div class="card-body p-3">
-        <small class="card-subtitle mb-2 text-muted"><%= twit.createdAt %></small>
+        <small class="card-subtitle mb-2 text-muted"><%= new Date(twit.createdAt).toISOString().split('T')[0].split('-').reverse().join('/') %></small>
         <p class="card-text"><%= twit.twit %></p>
         <a href="/twit/<%= twit._id %>" class="card-link">Ver</a>
     </div>
@@ -22,7 +23,7 @@
 <% }) %>
 <% } %>
 <% if (!twits) { %>
-<div class="alert alert-light" role="alert">
-    A simple light alert—check it out!
-    </div>
+<div class="alert alert-info" role="alert">
+    No hay <b>twits</b> aún...
+</div>
 <% } %>

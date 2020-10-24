@@ -26,6 +26,14 @@ render(app, {
     async: true
 })
 
+app.use(async (ctx, next) => {
+    try {
+        await next()
+    } catch (err) {
+        ctx.status = err.status || 500
+    }
+})
+
 const router = require('./routes')
 
 // Router Middleware

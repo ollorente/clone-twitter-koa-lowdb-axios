@@ -125,6 +125,27 @@
       "userId": "tchalla",
       "createdAt": 1603496530016,
       "updatedAt": 1603496530016
+    },
+    {
+      "_id": "b21uiJbzV",
+      "twit": "¡Wakanda forever!",
+      "userId": "tchalla",
+      "createdAt": 1603564290793,
+      "updatedAt": 1603564290793
+    },
+    {
+      "_id": "KLms5T4cH",
+      "twit": "En tiempos de crisis, los sabios construyen puentes mientras que los tontos construyen barreras.",
+      "userId": "tchalla",
+      "createdAt": 1603573954765,
+      "updatedAt": 1603573954765
+    },
+    {
+      "_id": "jeyRqPpao",
+      "twit": "Están sentados aquí arriba, todos cómodos. Deben sentirse bien. Mientras tanto, hay cerca de dos mil millones de personas en todo el mundo que se parecen a nosotros, pero sus vidas son mucho más difíciles.",
+      "userId": "tchalla",
+      "createdAt": 1603574103090,
+      "updatedAt": 1603574103090
     }
   ],
   "users": [
