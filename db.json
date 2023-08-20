@@ -146,6 +146,20 @@
       "userId": "tchalla",
       "createdAt": 1603574103090,
       "updatedAt": 1603574103090
+    },
+    {
+      "_id": "J2U1MotBu",
+      "twit": "Hola",
+      "userId": "tchalla",
+      "createdAt": 1611885580901,
+      "updatedAt": 1611885580901
+    },
+    {
+      "_id": "VeM12Eklq",
+      "twit": "Probando que todavía funcione",
+      "userId": "tchalla",
+      "createdAt": 1611885719359,
+      "updatedAt": 1611885719359
     }
   ],
   "users": [
